@@ -3,12 +3,7 @@ extends Area2D
 var speed = 2
 
 func _process(delta):
-	if Input.is_action_pressed("move_right"):
-		position.x += speed
-	if Input.is_action_pressed("move_left"):
-		position.x -= speed
-	if Input.is_action_pressed("move_down"):
-		position.y += speed
-	if Input.is_action_pressed("move_up"):
-		position.y -= speed
-		
+	
+	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	position += input_vector * speed
+
