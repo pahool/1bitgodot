@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2lccwoxw5kqb"]
+[gd_scene load_steps=3 format=3 uid="uid://b2lccwoxw5kqb"]
 
 [ext_resource type="PackedScene" uid="uid://cjt7dudn853i8" path="res://piggy.tscn" id="1_2bycr"]
+[ext_resource type="Script" path="res://piggy.gd" id="2_npqt8"]
 
 [node name="World" type="Node2D"]
 
 [node name="Piggy" parent="." instance=ExtResource("1_2bycr")]
-position = Vector2(151, 99)
+position = Vector2(164, 97)
+script = ExtResource("2_npqt8")

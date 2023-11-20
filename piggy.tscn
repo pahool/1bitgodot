@@ -5,6 +5,6 @@
 [node name="Piggy" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -6)
 texture = ExtResource("1_vdo23")
 hframes = 3
