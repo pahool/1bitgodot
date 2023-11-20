@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjt7dudn853i8"]
+
+[ext_resource type="Texture2D" uid="uid://d276si6xo803" path="res://resources/1-Bit Godot Course Resources/Piggy Assets/pig.png" id="1_vdo23"]
+
+[node name="Piggy" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("1_vdo23")
+hframes = 3
