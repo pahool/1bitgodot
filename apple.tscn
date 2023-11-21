@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://yfjucw12tc5e"]
+
+[ext_resource type="Texture2D" uid="uid://beqhf6wfsfwfq" path="res://resources/1-Bit Godot Course Resources/Piggy Assets/apple.png" id="1_gre5q"]
+
+[node name="Apple" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gre5q")
