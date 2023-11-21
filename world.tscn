@@ -1,40 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2lccwoxw5kqb"]
+[gd_scene load_steps=3 format=3 uid="uid://b2lccwoxw5kqb"]
 
 [ext_resource type="PackedScene" uid="uid://cjt7dudn853i8" path="res://piggy.tscn" id="1_2bycr"]
-[ext_resource type="Script" path="res://piggy.gd" id="2_npqt8"]
-[ext_resource type="Texture2D" uid="uid://beqhf6wfsfwfq" path="res://resources/1-Bit Godot Course Resources/Piggy Assets/apple.png" id="3_swgnn"]
+[ext_resource type="PackedScene" uid="uid://yfjucw12tc5e" path="res://apple.tscn" id="2_1qvdi"]
 
 [node name="World" type="Node2D"]
 
 [node name="Piggy" parent="." instance=ExtResource("1_2bycr")]
+z_index = 1
 position = Vector2(164, 97)
-script = ExtResource("2_npqt8")
 speed = 65
 
-[node name="Apple" type="Sprite2D" parent="."]
-position = Vector2(60, 56)
-texture = ExtResource("3_swgnn")
+[node name="Apple" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(76, 84)
 
-[node name="Apple2" type="Sprite2D" parent="."]
-position = Vector2(42, 144)
-texture = ExtResource("3_swgnn")
+[node name="Apple2" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(103, 42)
 
-[node name="Apple3" type="Sprite2D" parent="."]
-position = Vector2(79, 109)
-texture = ExtResource("3_swgnn")
+[node name="Apple3" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(96, 147)
 
-[node name="Apple4" type="Sprite2D" parent="."]
-position = Vector2(236, 29)
-texture = ExtResource("3_swgnn")
+[node name="Apple4" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(203, 34)
 
-[node name="Apple5" type="Sprite2D" parent="."]
-position = Vector2(147, 27)
-texture = ExtResource("3_swgnn")
+[node name="Apple5" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(221, 146)
 
-[node name="Apple6" type="Sprite2D" parent="."]
-position = Vector2(176, 148)
-texture = ExtResource("3_swgnn")
+[node name="Apple6" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(270, 54)
 
-[node name="Apple7" type="Sprite2D" parent="."]
-position = Vector2(251, 99)
-texture = ExtResource("3_swgnn")
+[node name="Apple7" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(276, 97)
+
+[node name="Apple8" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(27, 120)
+
+[node name="Apple9" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(25, 33)
+
+[node name="Apple10" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(226, 96)
+
+[node name="Apple11" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(62, 25)
+
+[node name="Apple12" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(109, 115)
+
+[node name="Apple13" parent="." instance=ExtResource("2_1qvdi")]
+position = Vector2(137, 61)

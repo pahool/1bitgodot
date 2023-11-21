@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://yfjucw12tc5e"]
+[gd_scene load_steps=3 format=3 uid="uid://yfjucw12tc5e"]
 
 [ext_resource type="Texture2D" uid="uid://beqhf6wfsfwfq" path="res://resources/1-Bit Godot Course Resources/Piggy Assets/apple.png" id="1_gre5q"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bci4f"]
+radius = 5.0
+
 [node name="Apple" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_gre5q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_bci4f")
