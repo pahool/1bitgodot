@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cro3dv3hxbda5"]
+[gd_scene load_steps=4 format=3 uid="uid://cro3dv3hxbda5"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_8hofb"]
 [ext_resource type="Texture2D" uid="uid://nkg1yil70383" path="res://assets/enemy.png" id="2_rtdf8"]
+[ext_resource type="PackedScene" uid="uid://c74qo288xigtk" path="res://explosion_creator.tscn" id="3_akes7"]
 
 [node name="Enemy" type="Area2D"]
 script = ExtResource("1_8hofb")
@@ -15,6 +16,8 @@ polygon = PackedVector2Array(-5, -2, 1, -7, 3, -7, 5, -5, 5, 5, 3, 7, 1, 7, -5, 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(2.68221e-07, 1)
 scale = Vector2(0.5, 0.6)
+
+[node name="ExplosionCreator" parent="." instance=ExtResource("3_akes7")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
