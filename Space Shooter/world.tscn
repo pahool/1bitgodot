@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxhw7fp1p3qdc"]
+[gd_scene load_steps=6 format=3 uid="uid://dxhw7fp1p3qdc"]
 
 [ext_resource type="PackedScene" uid="uid://bt0j8bc2hihhp" path="res://ship.tscn" id="1_3mc07"]
+[ext_resource type="Script" path="res://world.gd" id="1_okalw"]
 [ext_resource type="PackedScene" uid="uid://bbfyddde46ue0" path="res://enemy_spawner.tscn" id="2_prlop"]
+[ext_resource type="FontFile" uid="uid://0ndh3haej6gs" path="res://assets/pixel_rpg.ttf" id="3_4b41b"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_oplnr"]
+font = ExtResource("3_4b41b")
+font_size = 12
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_okalw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 320.0
@@ -16,3 +23,12 @@ position = Vector2(16, 88)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_prlop")]
 position = Vector2(320, 0)
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 96.0
+offset_right = 224.0
+offset_bottom = 23.0
+text = "score = 0"
+label_settings = SubResource("LabelSettings_oplnr")
+horizontal_alignment = 1
+vertical_alignment = 1
