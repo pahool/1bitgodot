@@ -25,6 +25,7 @@ position = Vector2(16, 88)
 position = Vector2(320, 0)
 
 [node name="ScoreLabel" type="Label" parent="."]
+z_index = 2
 offset_left = 96.0
 offset_right = 224.0
 offset_bottom = 23.0
@@ -34,7 +35,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StarParticles" type="CPUParticles2D" parent="."]
-visible = false
 position = Vector2(320, 90)
 amount = 200
 lifetime = 7.0

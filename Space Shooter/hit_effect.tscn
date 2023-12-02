@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs4gj6xfhsa3i"]
+[gd_scene load_steps=4 format=3 uid="uid://bs4gj6xfhsa3i"]
 
 [ext_resource type="Script" path="res://HitEffect.gd" id="1_ljmqw"]
+[ext_resource type="AudioStream" uid="uid://dlxsjseefe63i" path="res://assets/hit_sound.wav" id="2_3b82p"]
 
 [sub_resource type="Gradient" id="Gradient_kw2fs"]
 offsets = PackedFloat32Array(0.803493, 1)
@@ -23,5 +24,9 @@ color_ramp = SubResource("Gradient_kw2fs")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3b82p")
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtdpy33ra03ca"]
+[gd_scene load_steps=6 format=3 uid="uid://dtdpy33ra03ca"]
 
 [ext_resource type="Texture2D" uid="uid://c1psd5g4byyv" path="res://assets/explosion.png" id="1_it4ny"]
+[ext_resource type="AudioStream" uid="uid://d3bk0j83utunt" path="res://assets/explosion_sound.wav" id="2_guxqx"]
 
 [sub_resource type="Animation" id="Animation_om5gx"]
 length = 0.001
@@ -62,3 +63,7 @@ autoplay = "explode"
 libraries = {
 "": SubResource("AnimationLibrary_ng3dh")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_guxqx")
+autoplay = true

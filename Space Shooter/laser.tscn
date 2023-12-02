@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cttqkc13k4sdg"]
+[gd_scene load_steps=6 format=3 uid="uid://cttqkc13k4sdg"]
 
 [ext_resource type="Texture2D" uid="uid://bu5kv5ssgv0ed" path="res://assets/laser.png" id="1_ml1xr"]
-[ext_resource type="PackedScene" uid="uid://c74qo288xigtk" path="res://explosion_creator.tscn" id="2_m635v"]
+[ext_resource type="PackedScene" uid="uid://c74qo288xigtk" path="res://effect_creator.tscn" id="2_m635v"]
+[ext_resource type="PackedScene" uid="uid://bs4gj6xfhsa3i" path="res://hit_effect.tscn" id="3_nasrw"]
+[ext_resource type="AudioStream" uid="uid://s1khrnsw3s15" path="res://assets/laser_sound.wav" id="4_cjpng"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tye0l"]
 size = Vector2(8, 8)
@@ -21,5 +23,10 @@ position = Vector2(2.38419e-07, 2.38419e-07)
 scale = Vector2(0.4, 0.4)
 
 [node name="EffectCreator" parent="." instance=ExtResource("2_m635v")]
+EFFECT_SCENE = ExtResource("3_nasrw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cjpng")
+autoplay = true
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]
