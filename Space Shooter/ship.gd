@@ -9,7 +9,7 @@ func _process(delta):
 		position.y -= speed * delta
 	if Input.is_action_pressed("ui_down"):
 		position.y += speed * delta
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_accept"):
 		var laser = LASER_SCENE.instantiate()
 		var world = get_tree().current_scene
 		world.add_child(laser)

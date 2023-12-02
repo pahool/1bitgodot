@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs4gj6xfhsa3i"]
+
+[ext_resource type="Script" path="res://HitEffect.gd" id="1_ljmqw"]
+
+[sub_resource type="Gradient" id="Gradient_kw2fs"]
+offsets = PackedFloat32Array(0.803493, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="HitEffect" type="Node2D"]
+script = ExtResource("1_ljmqw")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 6
+lifetime = 0.5
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_kw2fs")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

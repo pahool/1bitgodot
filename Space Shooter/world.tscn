@@ -32,3 +32,17 @@ text = "score = 0"
 label_settings = SubResource("LabelSettings_oplnr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StarParticles" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(320, 90)
+amount = 200
+lifetime = 7.0
+preprocess = 7.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 90)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
