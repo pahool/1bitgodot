@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Space Shooter"
-run/main_scene="res://world.tscn"
+run/main_scene="res://start_menu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://assets/icon.svg"
+
+[autoload]
+
+MusicPlayer="*res://music_player.tscn"
 
 [display]
 

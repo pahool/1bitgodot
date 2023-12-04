@@ -3,11 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bt0j8bc2hihhp" path="res://ship.tscn" id="1_3mc07"]
 [ext_resource type="Script" path="res://world.gd" id="1_okalw"]
 [ext_resource type="PackedScene" uid="uid://bbfyddde46ue0" path="res://enemy_spawner.tscn" id="2_prlop"]
-[ext_resource type="FontFile" uid="uid://0ndh3haej6gs" path="res://assets/pixel_rpg.ttf" id="3_4b41b"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_oplnr"]
-font = ExtResource("3_4b41b")
-font_size = 12
+[ext_resource type="LabelSettings" uid="uid://biv31a4qay7hh" path="res://Label_settings.tres" id="4_v343y"]
+[ext_resource type="PackedScene" uid="uid://60c7sqqdlks7" path="res://star_particles.tscn" id="5_crdpy"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_okalw")
@@ -30,19 +27,10 @@ offset_left = 96.0
 offset_right = 224.0
 offset_bottom = 23.0
 text = "score = 0"
-label_settings = SubResource("LabelSettings_oplnr")
+label_settings = ExtResource("4_v343y")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StarParticles" type="CPUParticles2D" parent="."]
-position = Vector2(320, 90)
-amount = 200
-lifetime = 7.0
-preprocess = 7.0
-emission_shape = 3
-emission_rect_extents = Vector2(1, 90)
-direction = Vector2(-1, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 50.0
-initial_velocity_max = 100.0
+[node name="StarParticles" parent="." instance=ExtResource("5_crdpy")]
+
+[connection signal="ship_destroyed" from="Ship" to="." method="_on_ship_ship_destroyed"]
