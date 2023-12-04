@@ -3,14 +3,18 @@ extends Area2D
 const LASER_SCENE = preload("res://laser.tscn")
 
 @export var speed = 100
+var height = ProjectSettings.get_setting("display/window/size/viewport_height")
+var shipwidth = 16
 
 signal ship_destroyed
 
 func _process(delta):
 	if Input.is_action_pressed("ui_up"):
-		position.y -= speed * delta
+		if position.y > shipwidth/2 :
+			position.y -= speed * delta
 	if Input.is_action_pressed("ui_down"):
-		position.y += speed * delta
+		if position.y < height - (shipwidth/2):
+			position.y += speed * delta
 	if Input.is_action_just_pressed("ui_accept"):
 		var laser = LASER_SCENE.instantiate()
 		var world = get_tree().current_scene
