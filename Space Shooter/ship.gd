@@ -4,7 +4,10 @@ const LASER_SCENE = preload("res://laser.tscn")
 
 @export var speed = 100
 var height = ProjectSettings.get_setting("display/window/size/viewport_height")
-var shipwidth = 16
+
+# shipwidth is used to set boundaries so ship doesn't go off screen. May be better to use 
+# may be better to use collision detection for this, but this is good enough.
+var shipwidth = 16 
 
 signal ship_destroyed
 
