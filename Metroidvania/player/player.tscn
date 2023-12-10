@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwau2bhwlmmwi"]
+[gd_scene load_steps=10 format=3 uid="uid://cwau2bhwlmmwi"]
 
 [ext_resource type="Texture2D" uid="uid://dm66dapvw8qgs" path="res://player/player.png" id="1_16g2t"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_oxyag"]
+[ext_resource type="PackedScene" uid="uid://c4rvbx0fbhhc1" path="res://player/player_blaster.tscn" id="2_wxfrt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8roe"]
 size = Vector2(8, 14)
@@ -104,6 +105,12 @@ position = Vector2(0, -12)
 texture = ExtResource("1_16g2t")
 hframes = 12
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite2D"]
+position = Vector2(2, 4)
+remote_path = NodePath("../../PlayerBlaster")
+update_rotation = false
+update_scale = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_v8roe")
@@ -119,3 +126,7 @@ position = Vector2(0, -7)
 [node name="CoyoteJumpTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="PlayerBlaster" parent="." instance=ExtResource("2_wxfrt")]
+show_behind_parent = true
+position = Vector2(2, -8)
