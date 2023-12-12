@@ -130,3 +130,7 @@ one_shot = true
 [node name="PlayerBlaster" parent="." instance=ExtResource("2_wxfrt")]
 show_behind_parent = true
 position = Vector2(2, -8)
+
+[node name="FireRateTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
