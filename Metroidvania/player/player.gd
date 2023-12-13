@@ -27,6 +27,10 @@ func _physics_process(delta):
 	if Input.is_action_pressed("fire") and fire_rate_timer.time_left == 0:
 		fire_rate_timer.start()
 		player_blaster.fire_bullet()
+	if Input.is_action_just_pressed("crouch"):
+		set_collision_mask_value(2, false)
+	if Input.is_action_just_released("crouch"):
+		set_collision_mask_value(2, true)
 	update_animations(input_axis)
 	var was_on_floor = is_on_floor()
 	move_and_slide()

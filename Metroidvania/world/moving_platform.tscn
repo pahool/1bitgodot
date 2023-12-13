@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=3 uid="uid://1lmo4hcimfwu"]
+
+[ext_resource type="Texture2D" uid="uid://dufxu2s5aixnn" path="res://world/moving_platform.png" id="1_tsjmy"]
+
+[sub_resource type="Curve2D" id="Curve2D_7phyu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -72, -8, 0, 0, 0, 0, -40, -40, 0, 0, 0, 0, 8, -40, 0, 0, 0, 0, 40, -8, 0, 0, 0, 0, 8, 24, 0, 0, 0, 0, -40, 24, 0, 0, 0, 0, -72, -8)
+}
+point_count = 7
+
+[sub_resource type="Animation" id="Animation_32rws"]
+resource_name = "path_follow"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_mixy8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sgw4w"]
+_data = {
+"RESET": SubResource("Animation_mixy8"),
+"path_follow": SubResource("Animation_32rws")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xd4qa"]
+size = Vector2(32, 8)
+
+[node name="MovingPlatform" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_7phyu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-4.88049, 24)
+progress = 196.689
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D"]
+remote_path = NodePath("../../../AnimatableBody2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sgw4w")
+}
+autoplay = "path_follow"
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(-4.88049, 24)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = ExtResource("1_tsjmy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_xd4qa")
+one_way_collision = true
