@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7cu1kon6ow0l"]
+
+[ext_resource type="Script" path="res://enemies/walking_enemys.gd" id="1_kd1pi"]
+[ext_resource type="Texture2D" uid="uid://di08nuv4a8nnh" path="res://enemies/walking_enemy.png" id="1_ku7hf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_781io"]
+size = Vector2(8, 11)
+
+[node name="WalkingEnemy" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+floor_constant_speed = true
+floor_snap_length = 2.0
+script = ExtResource("1_kd1pi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+texture = ExtResource("1_ku7hf")
+flip_h = true
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_781io")
+
+[node name="FloorCast" type="RayCast2D" parent="."]
+position = Vector2(0, -5)
+target_position = Vector2(0, 12)
