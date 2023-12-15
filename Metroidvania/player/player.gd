@@ -14,6 +14,7 @@ const DustEffectScene = preload("res://effects/dust_effect.tscn")
 @onready var sprite_2d = $Sprite2D
 @onready var coyote_jump_timer = $CoyoteJumpTimer
 @onready var fire_rate_timer = $FireRateTimer
+@onready var camera_2d = $Camera2D
 
 func _physics_process(delta):
 	
@@ -75,3 +76,7 @@ func update_animations(input_axis):
 	
 	if not is_on_floor():
 		animation_player.play("jump")
+
+func _on_hurt_box_hurt(hitbox, damage):
+	camera_2d.reparent(get_tree().current_scene)
+	queue_free()
