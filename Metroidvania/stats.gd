@@ -9,6 +9,6 @@ func set_max_health(value):
 	max_health = value 
 
 func set_health(value):
-	health = value
+	health = clamp(value, 0, max_health)
 	if health <= 0: no_health.emit()
 	

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dxg5vopu65gxn" path="res://world/world_tile_map.tscn" id="2_6bihu"]
 [ext_resource type="PackedScene" uid="uid://1lmo4hcimfwu" path="res://world/moving_platform.tscn" id="4_u32xh"]
 [ext_resource type="Curve2D" uid="uid://cd3fdgpjcqm3n" path="res://world/hex_path.tres" id="5_lb6sl"]
-[ext_resource type="PackedScene" uid="uid://c7cu1kon6ow0l" path="res://enemies/walking_enemys.tscn" id="6_uetlq"]
+[ext_resource type="PackedScene" uid="uid://c7cu1kon6ow0l" path="res://enemies/walking_enemy.tscn" id="6_uetlq"]
 
 [sub_resource type="Curve2D" id="Curve2D_sce0e"]
 _data = {

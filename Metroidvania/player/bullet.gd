@@ -1,4 +1,4 @@
-extends "res://projectile.gd"
+extends Projectile
 
 func _ready():
 	set_process(false)
