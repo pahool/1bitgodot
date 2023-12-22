@@ -87,7 +87,10 @@ func update_animations(input_axis):
 func _on_hurt_box_hurt(hitbox, damage):
 	Events.add_screenshake.emit(3, .25)
 	PlayerStats.health -= 1
+	hurt_box.is_invincible = true
 	blinking_animation_player.play("blink")
+	await blinking_animation_player.animation_finished
+	hurt_box.is_invincible = false
 	
 func die():
 	camera_2d.reparent(get_tree().current_scene)

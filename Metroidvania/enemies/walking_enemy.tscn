@@ -51,7 +51,6 @@ position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_yu7dg")
 
 [node name="Stats" parent="." instance=ExtResource("5_51ce3")]
-max_health = null
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
