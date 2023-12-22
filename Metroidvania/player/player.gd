@@ -81,4 +81,5 @@ func update_animations(input_axis):
 
 func _on_hurt_box_hurt(hitbox, damage):
 	camera_2d.reparent(get_tree().current_scene)
+	Events.add_screenshake.emit(3, .25)
 	queue_free()
