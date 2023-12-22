@@ -17,6 +17,7 @@ const JumpEffectScene = preload("res://effects/jump_effect.tscn")
 @onready var fire_rate_timer = $FireRateTimer
 @onready var camera_2d = $Camera2D
 @onready var hurt_box : = $HurtBox
+@onready var blinking_animation_player = $BlinkingAnimationPlayer
 
 func _ready():
 	PlayerStats.no_health.connect(die)
@@ -86,9 +87,7 @@ func update_animations(input_axis):
 func _on_hurt_box_hurt(hitbox, damage):
 	Events.add_screenshake.emit(3, .25)
 	PlayerStats.health -= 1
-	hurt_box.is_invincible = true
-	await get_tree().create_timer(1.0).timeout
-	hurt_box.is_invincible = false
+	blinking_animation_player.play("blink")
 	
 func die():
 	camera_2d.reparent(get_tree().current_scene)
