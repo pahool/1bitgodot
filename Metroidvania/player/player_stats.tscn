@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlnbo2qu0f5as"]
+
+[ext_resource type="Script" path="res://player/PlayerStats.gd" id="1_0uyom"]
+
+[node name="PlayerStats" type="Node"]
+script = ExtResource("1_0uyom")
+max_health = 4

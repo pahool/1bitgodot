@@ -16,6 +16,10 @@ const JumpEffectScene = preload("res://effects/jump_effect.tscn")
 @onready var coyote_jump_timer = $CoyoteJumpTimer
 @onready var fire_rate_timer = $FireRateTimer
 @onready var camera_2d = $Camera2D
+@onready var hurt_box : = $HurtBox
+
+func _ready():
+	PlayerStats.no_health.connect(die)
 
 func _physics_process(delta):
 	
@@ -80,6 +84,12 @@ func update_animations(input_axis):
 		animation_player.play("jump")
 
 func _on_hurt_box_hurt(hitbox, damage):
-	camera_2d.reparent(get_tree().current_scene)
 	Events.add_screenshake.emit(3, .25)
+	PlayerStats.health -= 1
+	hurt_box.is_invincible = true
+	await get_tree().create_timer(1.0).timeout
+	hurt_box.is_invincible = false
+	
+func die():
+	camera_2d.reparent(get_tree().current_scene)
 	queue_free()

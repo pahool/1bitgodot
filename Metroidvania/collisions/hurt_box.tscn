@@ -6,3 +6,5 @@
 light_mask = 0
 visibility_layer = 0
 script = ExtResource("1_qfr47")
+
+[node name="Timer" type="Timer" parent="."]
