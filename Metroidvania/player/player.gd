@@ -12,6 +12,8 @@ const JumpEffectScene = preload("res://effects/jump_effect.tscn")
 @onready var player_blaster = $PlayerBlaster
 
 var air_jump = false
+#var state = move_state
+var state = wall_slide_state
 
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_2d = $Sprite2D
@@ -25,7 +27,9 @@ func _ready():
 	PlayerStats.no_health.connect(die)
 
 func _physics_process(delta):
-	
+	state.call(delta)
+
+func move_state(delta):
 	apply_gravity(delta)
 	var input_axis = Input.get_axis("move_left", "move_right")
 	if is_moving(input_axis):
@@ -46,7 +50,10 @@ func _physics_process(delta):
 	var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_edge:
 		coyote_jump_timer.start()
-	
+
+func wall_slide_state(delta):
+	pass
+
 func create_dust_effect():
 	Utils.instantiate_scene_on_world(DustEffectScene, global_position)
 
