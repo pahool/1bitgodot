@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://d31lr6l44awor"]
+
+[ext_resource type="Texture2D" uid="uid://bqgb61y37avn2" path="res://effects/wall_dust_effect.png" id="1_gv4f0"]
+[ext_resource type="Script" path="res://effects/effect.gd" id="2_mjkpo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_praw6"]
+atlas = ExtResource("1_gv4f0")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dorv"]
+atlas = ExtResource("1_gv4f0")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8yoh"]
+atlas = ExtResource("1_gv4f0")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p36t"]
+atlas = ExtResource("1_gv4f0")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0jgi"]
+atlas = ExtResource("1_gv4f0")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04sgo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_praw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dorv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8yoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p36t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0jgi")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="WallJumpEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_04sgo")
+autoplay = "default"
+script = ExtResource("2_mjkpo")

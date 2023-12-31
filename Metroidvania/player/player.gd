@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 const DustEffectScene = preload("res://effects/dust_effect.tscn")
 const JumpEffectScene = preload("res://effects/jump_effect.tscn")
+const WallJumpEffectScene = preload("res://effects/wall_jump_effect.tscn")
 
 @export var acceleration = 512
 @export var max_velocity = 64
 @export var friction = 256
+@export var air_friction = 64
 @export var gravity = 200
 @export var jump_force = 128
 @export var max_fall_velocity = 128
@@ -58,6 +60,7 @@ func wall_slide_state(delta):
 	var wall_normal = get_wall_normal()
 	animation_player.play("wall_slide")
 	sprite_2d.scale.x = sign(wall_normal.x)
+	velocity.y = clampf(velocity.y, -wall_slide_speed, max_wall_slide_speed)
 	wall_jump_check(wall_normal.x)
 	apply_wall_slide_gravity(delta)
 	move_and_slide()
@@ -66,6 +69,7 @@ func wall_slide_state(delta):
 func wall_check():
 	if not is_on_floor() and is_on_wall():
 		state = wall_slide_state
+		create_dust_effect()
 		air_jump = true
 		
 func wall_detach(delta):
@@ -75,14 +79,18 @@ func wall_detach(delta):
 	if Input.is_action_just_pressed("move_left"):
 		velocity.x = -acceleration * delta
 		state = move_state
+		
 	if not is_on_wall() or is_on_floor():
 		state = move_state
 
-func wall_jump_check(wall_axis):
+func wall_jump_check(wall_axis): 
 	if Input.is_action_just_pressed("jump"):
 		velocity.x = wall_axis * max_velocity
-		jump(jump_force * 0.75)
 		state = move_state
+		jump(jump_force * 0.75, false)
+		var wall_jump_effect_position = global_position + Vector2(wall_axis * 3.5, -2)
+		var wall_jump_effect = Utils.instantiate_scene_on_world(WallJumpEffectScene, wall_jump_effect_position)
+		wall_jump_effect.scale.x = wall_axis
 		
 func apply_wall_slide_gravity(delta):
 	var slide_speed = wall_slide_speed
@@ -104,7 +112,10 @@ func apply_acceleration(delta, input_axis):
 	velocity.x = move_toward(velocity.x, input_axis * max_velocity, acceleration * delta)
 
 func apply_friction(delta):
-	velocity.x = move_toward(velocity.x, 0, friction * delta)
+	if is_on_floor():
+		velocity.x = move_toward(velocity.x, 0, friction * delta)
+	else:
+		velocity. x = move_toward(velocity.x, 0, air_friction * delta)
 		
 func jump_check():
 	if is_on_floor():
@@ -120,8 +131,9 @@ func jump_check():
 			jump(jump_force * 0.75)
 			air_jump = false
 
-func jump(force):
-	velocity.y = -force
+func jump(force, create_effect = true):
+	if create_effect:
+		velocity.y = -force
 	
 func update_animations(input_axis):
 	# character should face mouse (and handle 0 case for mouse position)
