@@ -9,12 +9,13 @@ const JumpEffectScene = preload("res://effects/jump_effect.tscn")
 @export var gravity = 200
 @export var jump_force = 128
 @export var max_fall_velocity = 128
-@onready var player_blaster = $PlayerBlaster
+@export var wall_slide_speed = 42
+@export var max_wall_slide_speed = 128
 
 var air_jump = false
-#var state = move_state
-var state = wall_slide_state
+var state = move_state
 
+@onready var player_blaster = $PlayerBlaster
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_2d = $Sprite2D
 @onready var coyote_jump_timer = $CoyoteJumpTimer
@@ -29,6 +30,10 @@ func _ready():
 func _physics_process(delta):
 	state.call(delta)
 
+	if Input.is_action_pressed("fire") and fire_rate_timer.time_left == 0:
+		fire_rate_timer.start()
+		player_blaster.fire_bullet()
+		
 func move_state(delta):
 	apply_gravity(delta)
 	var input_axis = Input.get_axis("move_left", "move_right")
@@ -37,9 +42,6 @@ func move_state(delta):
 	else: 
 		apply_friction(delta)
 	jump_check()
-	if Input.is_action_pressed("fire") and fire_rate_timer.time_left == 0:
-		fire_rate_timer.start()
-		player_blaster.fire_bullet()
 	if Input.is_action_just_pressed("crouch"):
 		set_collision_mask_value(2, false)
 	if Input.is_action_just_released("crouch"):
@@ -50,9 +52,43 @@ func move_state(delta):
 	var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_edge:
 		coyote_jump_timer.start()
+	wall_check()
 
 func wall_slide_state(delta):
-	pass
+	var wall_normal = get_wall_normal()
+	animation_player.play("wall_slide")
+	sprite_2d.scale.x = sign(wall_normal.x)
+	wall_jump_check(wall_normal.x)
+	apply_wall_slide_gravity(delta)
+	move_and_slide()
+	wall_detach(delta)
+	
+func wall_check():
+	if not is_on_floor() and is_on_wall():
+		state = wall_slide_state
+		air_jump = true
+		
+func wall_detach(delta):
+	if Input.is_action_just_pressed("move_right"):
+		velocity.x = acceleration * delta
+		state = move_state
+	if Input.is_action_just_pressed("move_left"):
+		velocity.x = -acceleration * delta
+		state = move_state
+	if not is_on_wall() or is_on_floor():
+		state = move_state
+
+func wall_jump_check(wall_axis):
+	if Input.is_action_just_pressed("jump"):
+		velocity.x = wall_axis * max_velocity
+		jump(jump_force * 0.75)
+		state = move_state
+		
+func apply_wall_slide_gravity(delta):
+	var slide_speed = wall_slide_speed
+	if Input.is_action_pressed("crouch"):
+		slide_speed = max_wall_slide_speed
+	velocity.y = move_toward(velocity.y, slide_speed, gravity * delta)
 
 func create_dust_effect():
 	Utils.instantiate_scene_on_world(DustEffectScene, global_position)
