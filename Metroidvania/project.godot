@@ -21,6 +21,10 @@ Utils="*res://Utils.gd"
 Events="*res://Events.gd"
 PlayerStats="*res://player/player_stats.tscn"
 
+[debug]
+
+shapes/collision/shape_color=Color(0.203922, 0.592157, 0.678431, 0.419608)
+
 [display]
 
 window/size/viewport_width=320

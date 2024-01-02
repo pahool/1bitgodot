@@ -60,7 +60,7 @@ func wall_slide_state(delta):
 	var wall_normal = get_wall_normal()
 	animation_player.play("wall_slide")
 	sprite_2d.scale.x = sign(wall_normal.x)
-	velocity.y = clampf(velocity.y, -wall_slide_speed, max_wall_slide_speed)
+	velocity.y = clampf(velocity.y, max_wall_slide_speed/2, max_wall_slide_speed)
 	wall_jump_check(wall_normal.x)
 	apply_wall_slide_gravity(delta)
 	move_and_slide()
