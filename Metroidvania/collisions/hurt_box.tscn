@@ -3,8 +3,6 @@
 [ext_resource type="Script" path="res://collisions/hurt_box.gd" id="1_qfr47"]
 
 [node name="HurtBox" type="Area2D"]
-light_mask = 0
-visibility_layer = 0
 script = ExtResource("1_qfr47")
 
 [node name="Timer" type="Timer" parent="."]
