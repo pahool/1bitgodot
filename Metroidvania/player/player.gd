@@ -132,8 +132,9 @@ func jump_check():
 			air_jump = false
 
 func jump(force, create_effect = true):
+	velocity.y = -force
 	if create_effect:
-		velocity.y = -force
+		Utils.instantiate_scene_on_world(JumpEffectScene, global_position)
 	
 func update_animations(input_axis):
 	# character should face mouse (and handle 0 case for mouse position)
