@@ -29,6 +29,12 @@ var state = move_state
 func _ready():
 	PlayerStats.no_health.connect(die)
 
+func _enter_tree():
+	MainInstances.player = self
+
+func _exit_tree():
+	MainInstances.player = null
+
 func _physics_process(delta):
 	state.call(delta)
 

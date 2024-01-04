@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dffqgy5ekiw4u"]
+[gd_scene load_steps=12 format=3 uid="uid://dffqgy5ekiw4u"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_i11jd"]
 [ext_resource type="PackedScene" uid="uid://cwau2bhwlmmwi" path="res://player/player.tscn" id="1_y5ft8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://mugdrl8jaih1" path="res://ui/health_meter.tscn" id="7_rokr2"]
 [ext_resource type="PackedScene" uid="uid://723r5xpn2qw5" path="res://enemies/plant_enemy.tscn" id="8_80e8u"]
 [ext_resource type="PackedScene" uid="uid://dfdr3734q7ux0" path="res://enemies/crawling_enemy.tscn" id="9_e43yk"]
+[ext_resource type="PackedScene" uid="uid://bir6rxc2x8l6c" path="res://enemies/flying_enemy.tscn" id="10_kbxng"]
 
 [sub_resource type="Curve2D" id="Curve2D_sce0e"]
 _data = {
@@ -88,6 +89,9 @@ position = Vector2(364, 0)
 
 [node name="CrawlingEnemy2" parent="." instance=ExtResource("9_e43yk")]
 position = Vector2(-18, 32)
+
+[node name="FlyingEnemy" parent="." instance=ExtResource("10_kbxng")]
+position = Vector2(319, -34)
 
 [editable path="HexMovingPlatform"]
 [editable path="LeftRightMovingPlatform"]
