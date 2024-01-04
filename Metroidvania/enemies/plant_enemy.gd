@@ -1,6 +1,7 @@
 extends Node2D
 
 const EnemyBulletScene = preload("res://enemies/enemy_bullet.tscn")
+const EnemyDeathEffectScene = preload("res://effects/enemy_death_effect.tscn")
 
 @export var bullet_speed = 30
 @export var spread = 60
@@ -15,8 +16,9 @@ func fire_bullet():
 	velocity = velocity.rotated(randf_range(-deg_to_rad(spread/2), deg_to_rad(spread/2)))
 	bullet.velocity = velocity
 	
-func _on_stats_no_health():
-	queue_free()
-
 func _on_hurt_box_hurt(hitbox, damage):
 	stats.health -= damage
+	
+func _on_stats_no_health():
+	Utils.instantiate_scene_on_world(EnemyDeathEffectScene, bullet_spawn_point.global_position)
+	queue_free()
