@@ -67,10 +67,12 @@ func wall_slide_state(delta):
 	wall_detach(delta, wall_normal.x)
 	
 func wall_check():
+	var wall_normal = get_wall_normal().x
 	if not is_on_floor() and is_on_wall():
-		state = wall_slide_state
-		air_jump = true
-		create_dust_effect()
+		if (wall_normal == 1 and Input.is_action_pressed("move_left")) or (wall_normal == -1 and Input.is_action_pressed("move_right")):
+			state = wall_slide_state
+			air_jump = true
+			create_dust_effect()
 		
 func wall_detach(delta, wall_axis):
 	if Input.is_action_just_pressed("move_right") and wall_axis == 1:
