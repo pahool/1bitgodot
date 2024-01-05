@@ -9,6 +9,7 @@ const EnemyDeathEffectScene = preload("res://effects/enemy_death_effect.tscn")
 @onready var stats = $Stats as Stats
 @onready var waypoint_pathfinding = $VisibleOnScreenEnabler2D/WaypointPathfinding 
 
+
 func _physics_process(delta):
 	var player = MainInstances.player
 	if player is CharacterBody2D:

@@ -218,7 +218,7 @@ show_behind_parent = true
 position = Vector2(2, -8)
 
 [node name="FireRateTimer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.2
 one_shot = true
 
 [node name="HurtBox" parent="." instance=ExtResource("4_ug8ey")]
@@ -235,5 +235,8 @@ root_node = NodePath("../HurtBox")
 libraries = {
 "": SubResource("AnimationLibrary_yqxkd")
 }
+
+[node name="Center" type="Marker2D" parent="."]
+position = Vector2(0, -8)
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

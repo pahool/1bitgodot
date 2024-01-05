@@ -25,6 +25,7 @@ var state = move_state
 @onready var camera_2d = $Camera2D
 @onready var hurt_box : = $HurtBox
 @onready var blinking_animation_player = $BlinkingAnimationPlayer
+@onready var center = $Center
 
 func _ready():
 	PlayerStats.no_health.connect(die)
@@ -93,9 +94,9 @@ func wall_detach(delta, wall_axis):
 
 func wall_jump_check(wall_axis): 
 	if Input.is_action_just_pressed("jump"):
-		velocity.x = wall_axis * max_velocity
+		velocity.x = wall_axis * max_velocity * 1.5
 		state = move_state
-		jump(jump_force * 0.75, false)
+		jump(jump_force, false)
 		var wall_jump_effect_position = global_position + Vector2(wall_axis * 3.5, -2)
 		var wall_jump_effect = Utils.instantiate_scene_on_world(WallJumpEffectScene, wall_jump_effect_position)
 		wall_jump_effect.scale.x = wall_axis

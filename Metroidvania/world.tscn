@@ -91,7 +91,7 @@ position = Vector2(364, 0)
 position = Vector2(-18, 32)
 
 [node name="FlyingEnemy" parent="." instance=ExtResource("10_kbxng")]
-position = Vector2(319, -34)
+position = Vector2(425, -22)
 
 [editable path="HexMovingPlatform"]
 [editable path="LeftRightMovingPlatform"]
