@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bir6rxc2x8l6c"]
+[gd_scene load_steps=17 format=3 uid="uid://bir6rxc2x8l6c"]
 
 [ext_resource type="Texture2D" uid="uid://ceg1j8dqoh0yn" path="res://enemies/flying_enemy.png" id="1_jljba"]
 [ext_resource type="Script" path="res://enemies/flying_enemy.gd" id="1_o3g73"]
 [ext_resource type="PackedScene" uid="uid://cv3w4v7jdh4iv" path="res://collisions/hurt_box.tscn" id="3_wdch6"]
 [ext_resource type="PackedScene" uid="uid://c3kcy38o4gjq8" path="res://collisions/hit_box.tscn" id="4_v2gwh"]
 [ext_resource type="PackedScene" uid="uid://comwyrg47yd7r" path="res://stats.tscn" id="5_o82gy"]
+[ext_resource type="PackedScene" uid="uid://chvhmyiadr7i" path="res://enemies/waypoint_pathfinding.tscn" id="6_qk1wk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7vej1"]
 atlas = ExtResource("1_jljba")
@@ -66,7 +67,8 @@ radius = 6.08276
 radius = 3.16228
 
 [node name="FlyingEnemy" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 8
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_o3g73")
 
@@ -94,6 +96,12 @@ collision_mask = 16
 shape = SubResource("CircleShape2D_qrv17")
 
 [node name="Stats" parent="." instance=ExtResource("5_o82gy")]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-3.57628e-07, 0)
+scale = Vector2(0.6, 0.6)
+
+[node name="WaypointPathfinding" parent="VisibleOnScreenEnabler2D" instance=ExtResource("6_qk1wk")]
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="no_health" from="Stats" to="." method="_on_stats_no_health"]
