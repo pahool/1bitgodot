@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dffqgy5ekiw4u"]
+[gd_scene load_steps=13 format=3 uid="uid://dffqgy5ekiw4u"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_i11jd"]
 [ext_resource type="PackedScene" uid="uid://cwau2bhwlmmwi" path="res://player/player.tscn" id="1_y5ft8"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://723r5xpn2qw5" path="res://enemies/plant_enemy.tscn" id="8_80e8u"]
 [ext_resource type="PackedScene" uid="uid://dfdr3734q7ux0" path="res://enemies/crawling_enemy.tscn" id="9_e43yk"]
 [ext_resource type="PackedScene" uid="uid://bir6rxc2x8l6c" path="res://enemies/flying_enemy.tscn" id="10_kbxng"]
+[ext_resource type="PackedScene" uid="uid://drymtj1hdojaf" path="res://menus/pause_menu.tscn" id="11_wwiy6"]
 
 [sub_resource type="Curve2D" id="Curve2D_sce0e"]
 _data = {
@@ -72,6 +73,9 @@ offset_left = 5.0
 offset_top = 4.0
 offset_right = 5.0
 offset_bottom = 4.0
+
+[node name="PauseMenu" parent="ui" instance=ExtResource("11_wwiy6")]
+visible = false
 
 [node name="PlantEnemy" parent="." instance=ExtResource("8_80e8u")]
 position = Vector2(22, 48)
