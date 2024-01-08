@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dffqgy5ekiw4u"]
+[gd_scene load_steps=16 format=3 uid="uid://dffqgy5ekiw4u"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_i11jd"]
 [ext_resource type="PackedScene" uid="uid://cwau2bhwlmmwi" path="res://player/player.tscn" id="1_y5ft8"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bir6rxc2x8l6c" path="res://enemies/flying_enemy.tscn" id="10_kbxng"]
 [ext_resource type="PackedScene" uid="uid://drymtj1hdojaf" path="res://menus/pause_menu.tscn" id="11_wwiy6"]
 [ext_resource type="PackedScene" uid="uid://y0dgqgroah0j" path="res://world/brick.tscn" id="13_jaxcn"]
+[ext_resource type="PackedScene" uid="uid://bcmu1rmgb3q48" path="res://player/missile_powerup.tscn" id="14_ujalv"]
 
 [sub_resource type="Curve2D" id="Curve2D_sce0e"]
 _data = {
@@ -110,6 +111,9 @@ position = Vector2(-40, 48)
 
 [node name="Brick2" parent="." instance=ExtResource("13_jaxcn")]
 position = Vector2(-40, 64)
+
+[node name="MissilePowerup" parent="." instance=ExtResource("14_ujalv")]
+position = Vector2(24, 88)
 
 [editable path="HexMovingPlatform"]
 [editable path="LeftRightMovingPlatform"]
