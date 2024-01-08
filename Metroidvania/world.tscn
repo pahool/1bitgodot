@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dffqgy5ekiw4u"]
+[gd_scene load_steps=15 format=3 uid="uid://dffqgy5ekiw4u"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_i11jd"]
 [ext_resource type="PackedScene" uid="uid://cwau2bhwlmmwi" path="res://player/player.tscn" id="1_y5ft8"]
@@ -9,8 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://mugdrl8jaih1" path="res://ui/health_meter.tscn" id="7_rokr2"]
 [ext_resource type="PackedScene" uid="uid://723r5xpn2qw5" path="res://enemies/plant_enemy.tscn" id="8_80e8u"]
 [ext_resource type="PackedScene" uid="uid://dfdr3734q7ux0" path="res://enemies/crawling_enemy.tscn" id="9_e43yk"]
+[ext_resource type="PackedScene" uid="uid://c8g22b5yjf4fh" path="res://ui/missile_ui.tscn" id="9_gv8p8"]
 [ext_resource type="PackedScene" uid="uid://bir6rxc2x8l6c" path="res://enemies/flying_enemy.tscn" id="10_kbxng"]
 [ext_resource type="PackedScene" uid="uid://drymtj1hdojaf" path="res://menus/pause_menu.tscn" id="11_wwiy6"]
+[ext_resource type="PackedScene" uid="uid://y0dgqgroah0j" path="res://world/brick.tscn" id="13_jaxcn"]
 
 [sub_resource type="Curve2D" id="Curve2D_sce0e"]
 _data = {
@@ -77,6 +79,12 @@ offset_bottom = 4.0
 [node name="PauseMenu" parent="ui" instance=ExtResource("11_wwiy6")]
 visible = false
 
+[node name="MissileUI" parent="ui" instance=ExtResource("9_gv8p8")]
+offset_left = 38.0
+offset_top = 5.0
+offset_right = 51.0
+offset_bottom = 15.0
+
 [node name="PlantEnemy" parent="." instance=ExtResource("8_80e8u")]
 position = Vector2(22, 48)
 rotation = 3.14159
@@ -96,6 +104,12 @@ position = Vector2(-18, 32)
 
 [node name="FlyingEnemy" parent="." instance=ExtResource("10_kbxng")]
 position = Vector2(425, -22)
+
+[node name="Brick" parent="." instance=ExtResource("13_jaxcn")]
+position = Vector2(-40, 48)
+
+[node name="Brick2" parent="." instance=ExtResource("13_jaxcn")]
+position = Vector2(-40, 64)
 
 [editable path="HexMovingPlatform"]
 [editable path="LeftRightMovingPlatform"]

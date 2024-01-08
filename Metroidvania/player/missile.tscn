@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://crhh6mquw3jtl"]
+[gd_scene load_steps=7 format=3 uid="uid://crhh6mquw3jtl"]
 
 [ext_resource type="PackedScene" uid="uid://bjy72gqtniff" path="res://projectile.tscn" id="1_twkw5"]
 [ext_resource type="Texture2D" uid="uid://4m2uq23gtgc6" path="res://player/player_missile.png" id="2_pyej8"]
+[ext_resource type="Script" path="res://player/missile.gd" id="2_u073w"]
 [ext_resource type="Texture2D" uid="uid://bjj7vifnnx68v" path="res://effects/particle_effect.png" id="3_g7jyp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5lppq"]
@@ -12,6 +13,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0
 point_count = 3
 
 [node name="Missile" instance=ExtResource("1_twkw5")]
+script = ExtResource("2_u073w")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="0"]
 position = Vector2(-0.5, 0)
