@@ -113,7 +113,19 @@ position = Vector2(-40, 48)
 position = Vector2(-40, 64)
 
 [node name="MissilePowerup" parent="." instance=ExtResource("14_ujalv")]
-position = Vector2(24, 88)
+position = Vector2(24, 80)
+
+[node name="Brick3" parent="." instance=ExtResource("13_jaxcn")]
+position = Vector2(248, -40)
+
+[node name="Brick" parent="Brick3" instance=ExtResource("13_jaxcn")]
+position = Vector2(16, 0)
+
+[node name="CrawlingEnemy3" parent="." instance=ExtResource("9_e43yk")]
+position = Vector2(248, -40)
+
+[node name="MissilePowerup2" parent="." instance=ExtResource("14_ujalv")]
+position = Vector2(280, 32)
 
 [editable path="HexMovingPlatform"]
 [editable path="LeftRightMovingPlatform"]
