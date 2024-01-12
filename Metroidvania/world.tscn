@@ -11,7 +11,7 @@
 script = ExtResource("1_i11jd")
 
 [node name="Player" parent="." instance=ExtResource("1_y5ft8")]
-position = Vector2(600, -24)
+position = Vector2(464, -24)
 
 [node name="ui" type="CanvasLayer" parent="."]
 
