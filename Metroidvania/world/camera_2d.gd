@@ -20,7 +20,6 @@ func _on_timer_timeout():
 	shake = 0
 
 func update_limits(left, right, top, bottom):
-	print("updating limits")
 	limit_left = left
 	limit_right = right
 	limit_top = top

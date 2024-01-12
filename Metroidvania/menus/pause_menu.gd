@@ -8,7 +8,7 @@ var paused = false :
 		print("paused: " + str(paused))
 		print("pause menu visible: " + str(visible))
 		
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		paused = !paused
 
