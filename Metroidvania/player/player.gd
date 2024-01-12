@@ -104,7 +104,7 @@ func wall_jump_check(wall_axis):
 		state = move_state
 		jump(jump_force, false)
 		var wall_jump_effect_position = global_position + Vector2(wall_axis * 3.5, -2)
-		var wall_jump_effect = Utils.instantiate_scene_on_world(WallJumpEffectScene, wall_jump_effect_position)
+		var wall_jump_effect = Utils.instantiate_scene_on_level(WallJumpEffectScene, wall_jump_effect_position)
 		wall_jump_effect.scale.x = wall_axis
 		
 func apply_wall_slide_gravity(delta):
@@ -114,7 +114,7 @@ func apply_wall_slide_gravity(delta):
 	velocity.y = move_toward(velocity.y, slide_speed, gravity * delta)
 
 func create_dust_effect():
-	Utils.instantiate_scene_on_world(DustEffectScene, global_position)
+	Utils.instantiate_scene_on_level(DustEffectScene, global_position)
 
 func is_moving(input_axis):
 	return input_axis != 0
@@ -138,7 +138,7 @@ func jump_check():
 	if is_on_floor() or coyote_jump_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump"):
 			jump(jump_force)
-			Utils.instantiate_scene_on_world(JumpEffectScene, global_position)
+			Utils.instantiate_scene_on_level(JumpEffectScene, global_position)
 	if not is_on_floor():
 		if Input.is_action_just_released("jump") and velocity.y < -jump_force / 2:
 			velocity.y = -jump_force / 2
@@ -149,7 +149,7 @@ func jump_check():
 func jump(force, create_effect = true):
 	velocity.y = -force
 	if create_effect:
-		Utils.instantiate_scene_on_world(JumpEffectScene, global_position)
+		Utils.instantiate_scene_on_level(JumpEffectScene, global_position)
 	
 func update_animations(input_axis):
 	# character should face mouse (and handle 0 case for mouse position)

@@ -55,5 +55,5 @@ func _on_hurt_box_hurt(hitbox, damage):
 
 
 func _on_stats_no_health():
-	Utils.instantiate_scene_on_world(EnemyDeathEffectScene, global_position)
+	Utils.instantiate_scene_on_level(EnemyDeathEffectScene, global_position)
 	queue_free()
