@@ -1,0 +1,1 @@
+{"first_boss":{"freed":"true"},"level":{"file_path":"res://world/level_two.tscn"},"player":{"x":233.227813720703,"y":271.813171386719}}

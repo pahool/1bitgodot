@@ -255,7 +255,7 @@ libraries = {
 autoplay = "fly"
 
 [node name="Stats" parent="." instance=ExtResource("6_5mcen")]
-max_health = 100
+max_health = 10
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 32
