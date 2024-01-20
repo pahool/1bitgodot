@@ -180,3 +180,5 @@ func _on_hurt_box_hurt(hitbox, damage):
 func die():
 	camera_2d.reparent(get_tree().current_scene)
 	queue_free()
+	Events.player_died.emit()
+	
