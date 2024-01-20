@@ -23,6 +23,7 @@ offset_bottom = 4.0
 
 [node name="PauseMenu" parent="ui" instance=ExtResource("11_wwiy6")]
 visible = false
+z_index = 10
 
 [node name="MissileUI" parent="ui" instance=ExtResource("9_gv8p8")]
 offset_left = 38.0

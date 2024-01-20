@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://jcgg4clv260c"]
+[gd_scene load_steps=16 format=3 uid="uid://jcgg4clv260c"]
 
 [ext_resource type="Script" path="res://world/level.gd" id="1_5ad6r"]
 [ext_resource type="PackedScene" uid="uid://dxg5vopu65gxn" path="res://world/world_tile_map.tscn" id="1_jxgeg"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ccy3h1h5vjs5g" path="res://world/door.tscn" id="10_aa5c0"]
 [ext_resource type="Resource" uid="uid://fv4x5d3aikor" path="res://world/one_two.tres" id="11_yl4yy"]
 [ext_resource type="PackedScene" uid="uid://o6ruv3kr2kpb" path="res://world/camera_limits.tscn" id="12_7egkn"]
+[ext_resource type="PackedScene" uid="uid://cwkywvc2jme5e" path="res://world/save_station.tscn" id="14_lu5fp"]
 
 [sub_resource type="Curve2D" id="Curve2D_sce0e"]
 _data = {
@@ -134,6 +135,9 @@ offset_bottom = 128.0
 
 [node name="MissilePowerup3" parent="." instance=ExtResource("9_nwjdy")]
 position = Vector2(584, -24)
+
+[node name="SaveStation" parent="." instance=ExtResource("14_lu5fp")]
+position = Vector2(672, -16)
 
 [editable path="HexMovingPlatform"]
 [editable path="LeftRightMovingPlatform"]
